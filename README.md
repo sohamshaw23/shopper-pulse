@@ -1,66 +1,187 @@
+# 🛍️ Shopper Pulse
 
+> **Retail behaviour analytics dashboard — turn window shoppers into buyers.**
 
-## How can I edit this code?
+Shopper Pulse is the frontend dashboard for **LightHouse 💡**, a retail behaviour analytics system that goes beyond basic foot traffic counts to reveal *what customers are actually doing* inside your store. Built with React, TypeScript, and Recharts, it gives store managers real-time, actionable insights across every zone.
 
-There are several ways of editing your application.
+---
 
+## ✨ Features
 
+| Page | Description |
+|---|---|
+| **Overview** | High-level KPIs — total visitors, engagement rate, dwell time, conversion |
+| **Zone Analytics** | Per-zone breakdown of traffic, dwell time, and engagement |
+| **Heatmap** | Visual engagement intensity across store zones |
+| **Speed Analysis** | Customer walking speed distribution — differentiate browsers from buyers |
+| **Gaze Detection** | Track which products and displays are capturing visual attention |
+| **Dwell Time** | Measure how long customers linger in each zone |
+| **Customer Journey** | Visualise the most common paths customers take through the store |
+| **Campaigns** | Before/after campaign impact on traffic, dwell, and conversions |
+| **Alerts** | Real-time notifications when zones go hot, cold, or cross thresholds |
+| **Reports** | Weekly performance summaries across all zones and metrics |
 
+---
 
-**Use your preferred IDE**
+## 🚀 Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 18+
+- npm or bun
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/sohamshaw23/shopper-pulse.git
+cd shopper-pulse
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Install dependencies
+npm install
+# or
+bun install
 ```
 
-**Edit a file directly in GitHub**
+### Development
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run dev
+# or
+bun dev
+```
 
-**Use GitHub Codespaces**
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Build
 
-## What technologies are used for this project?
+```bash
+npm run build
+```
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🗂️ Project Structure
 
-## How can I deploy this project?
+```
+src/
+├── components/
+│   ├── ui/               # shadcn/ui primitives
+│   ├── KPICard.tsx       # Reusable metric card component
+│   ├── Navbar.tsx        # Top navigation bar with theme toggle
+│   └── Sidebar.tsx       # Collapsible sidebar navigation
+├── data/
+│   └── mockData.ts       # Mock data and TypeScript interfaces
+├── hooks/
+│   ├── use-mobile.tsx    # Mobile breakpoint hook
+│   └── use-toast.ts      # Toast notification hook
+├── lib/
+│   └── utils.ts          # Utility functions (cn, etc.)
+└── pages/
+    ├── Index.tsx          # Root layout — sidebar + page switcher
+    ├── Overview.tsx
+    ├── ZoneAnalytics.tsx
+    ├── Heatmap.tsx
+    ├── SpeedAnalysis.tsx
+    ├── GazeDetection.tsx
+    ├── DwellTime.tsx
+    ├── CustomerJourney.tsx
+    ├── Campaigns.tsx
+    ├── Alerts.tsx
+    └── Reports.tsx
+```
 
-Simply open [Lovable](https://lovable.dev/projects/9572a302-d395-4630-a238-65a39c88d084) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 🧠 The Problem We're Solving
 
-Yes, you can!
+Traditional retail analytics only count foot traffic — they tell you *how many* people entered, but nothing about what happened next.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Shopper Pulse tracks:**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- 👁️ **Gaze** — are customers actually looking at your displays?
+- 🚶 **Speed** — are they browsing or just passing through?
+- ⏱️ **Dwell Time** — where do they linger? Where do they rush?
+- 🗺️ **Journey** — what path do they take from entrance to exit?
+- 📍 **Zones** — which sections drive engagement vs dead zones?
+
+Together, these signals let retailers make smarter decisions about layout, product placement, staffing, and campaign spend.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| [React 18](https://react.dev) | UI framework |
+| [TypeScript](https://typescriptlang.org) | Type safety |
+| [Vite](https://vitejs.dev) | Build tool & dev server |
+| [Tailwind CSS](https://tailwindcss.com) | Styling |
+| [shadcn/ui](https://ui.shadcn.com) | Component library (Radix UI) |
+| [Recharts](https://recharts.org) | Charts and data visualisation |
+| [TanStack Query](https://tanstack.com/query) | Data fetching & caching |
+| [React Router v6](https://reactrouter.com) | Client-side routing |
+| [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) | Form validation |
+| [next-themes](https://github.com/pacocoursey/next-themes) | Dark / light mode |
+| [Lucide React](https://lucide.dev) | Icon library |
+
+---
+
+## 🎨 Dark Mode
+
+Shopper Pulse supports dark and light themes out of the box. The theme is auto-detected from your system preference and can be toggled via the navbar.
+
+---
+
+## 📊 Data
+
+Currently all data is mocked in `src/data/mockData.ts`. The interfaces are designed to be swapped out for a real backend — each page consumes typed data that maps directly to the analytics events your tracking system would emit.
+
+**Key interfaces:**
+
+```typescript
+Zone           // Per-zone visitor & engagement metrics
+GazeDataPoint  // Product-level gaze hits, duration, conversion
+DwellDataPoint // Short / medium / long visit breakdown per zone
+JourneyPath    // Customer path sequences with conversion rates
+Campaign       // Before/after campaign impact metrics
+Alert          // Threshold breach notifications
+```
+
+---
+
+## 📝 Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Production build
+npm run build:dev    # Development build
+npm run preview      # Preview production build locally
+npm run lint         # ESLint
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'Add your feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 👥 Built By
+
+| Name | Role |
+|---|---|
+| Pranav Patel | AI Researcher |
+| Shivam Mitter | AI Engineer |
+| Soham Shaw | Frontend Developer |
+
+---
+
+## 📄 License
+
+This project is private. All rights reserved.
