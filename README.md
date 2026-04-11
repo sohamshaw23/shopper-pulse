@@ -172,16 +172,6 @@ npm run lint         # ESLint
 
 ---
 
-## 👥 Built By
-
-| Name | Role |
-|---|---|
-| Pranav Patel | AI Researcher |
-| Shivam Mitter | AI Engineer |
-| Soham Shaw | Frontend Developer |
-
----
-
 ## 📄 License
 
 This project is private. All rights reserved.
